@@ -5,8 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { INewsItem } from './INews';
 
-const News: React.FC = () => {
+const News: React.FC<INewsItem> = (props) => {
+  const { item } = props;
+
   return (
     <Card sx={{ maxWidth: 345 }} style={{ marginBottom: 24 }}>
       <CardMedia
@@ -16,12 +19,11 @@ const News: React.FC = () => {
         image="https://images.unsplash.com/photo-1508138221679-760a23a2285b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          News 1
+        <Typography gutterBottom variant="h5" component="div" noWrap>
+          {item.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {item.body}
         </Typography>
       </CardContent>
       <CardActions>

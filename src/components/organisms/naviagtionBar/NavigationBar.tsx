@@ -12,7 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import Routes from '../../../constants/routes';
 
 const NavigationBar = () => {
-  const { toggleDrawer } = useContext<IGlobalContext>(GlobalContext);
+  const { searchValue, toggleDrawer, handleSearch } =
+    useContext<IGlobalContext>(GlobalContext);
   const navigate = useNavigate();
 
   return (
@@ -33,7 +34,7 @@ const NavigationBar = () => {
             News
           </Typography>
 
-          <NavBarSearch />
+          <NavBarSearch value={searchValue} onSearch={handleSearch} />
           <Button color="inherit" onClick={() => navigate(Routes.ADD_NEWS)}>
             Add News
           </Button>
