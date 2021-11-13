@@ -11,3 +11,13 @@ export const GET_ALL_NEWS = gql`
     }
   }
 `;
+
+export const CREATE_NEWS = gql`
+  mutation CreateNews($input: CreatePostInput!) {
+    createPost(input: $input) {
+      id
+      title
+      body
+    }
+  }
+`;

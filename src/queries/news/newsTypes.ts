@@ -9,3 +9,11 @@ export interface NewsFeedData {
     data: INews[];
   };
 }
+
+export interface NewsResponse extends INews {
+  __typename: string;
+}
+
+export interface ICreateNews {
+  createPost: NewsResponse;
+}
