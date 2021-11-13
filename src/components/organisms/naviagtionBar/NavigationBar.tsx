@@ -30,8 +30,14 @@ const NavigationBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+            style={{ cursor: 'pointer' }}
+            onClick={() => navigate(Routes.ROOT)}
+          >
+            Home
           </Typography>
 
           <NavBarSearch value={searchValue} onSearch={handleSearch} />

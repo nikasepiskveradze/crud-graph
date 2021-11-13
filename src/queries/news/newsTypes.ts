@@ -1,3 +1,5 @@
+import { Values } from '../../components/organisms/newsForm/INewsForm';
+
 export interface INews {
   id: string;
   title: string;
@@ -8,6 +10,14 @@ export interface NewsFeedData {
   posts: {
     data: INews[];
   };
+}
+
+export interface SingleNewsData {
+  post: Values;
+}
+
+export interface SingleNewsDataVars {
+  postId?: string;
 }
 
 export interface NewsResponse extends INews {
