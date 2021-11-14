@@ -40,3 +40,11 @@ export interface ICreateNews {
 export interface IUpdateNews {
   updatePost: INews;
 }
+
+export interface IDeleteNews {
+  deletePost: boolean;
+}
+
+export interface DeleteNewsVars {
+  id: number;
+}

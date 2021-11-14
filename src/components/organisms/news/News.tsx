@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { INewsItem } from './INews';
 
 const News: React.FC<INewsItem> = (props) => {
-  const { item, onEdit } = props;
+  const { item, onEdit, onDelete } = props;
 
   return (
     <Card sx={{ maxWidth: 345 }} style={{ marginBottom: 24 }}>
@@ -30,7 +30,9 @@ const News: React.FC<INewsItem> = (props) => {
         <Button size="small" onClick={() => onEdit(item.id)}>
           Edit
         </Button>
-        <Button size="small">Delete</Button>
+        <Button size="small" onClick={() => onDelete(item.id)}>
+          Delete
+        </Button>
       </CardActions>
     </Card>
   );

@@ -41,3 +41,9 @@ export const UPDATE_NEWS = gql`
     }
   }
 `;
+
+export const DELETE_NEWS = gql`
+  mutation DeleteNews($id: ID!) {
+    deletePost(id: $id)
+  }
+`;
