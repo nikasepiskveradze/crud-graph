@@ -1,47 +1,44 @@
-import { Values } from '../../components/organisms/newsForm/INewsForm';
-
-export interface INews {
-  id: string;
+export interface InputNews {
   title: string;
   body: string;
 }
 
-export interface NewsFeedData {
+export interface News extends InputNews {
+  id: string;
+}
+
+export interface NewsData {
   posts: {
-    data: INews[];
+    data: News[];
   };
 }
 
 export interface SingleNewsData {
-  post: Values;
+  post: News;
 }
 
-export interface SingleNewsDataVars {
+export interface SingleNewsVars {
   postId?: string;
 }
 
-export interface NewsResponse extends INews {
-  __typename: string;
+export interface CreateNews {
+  createPost: News;
 }
 
 export interface CreateNewsVars {
-  input: Values;
+  input: InputNews;
+}
+
+export interface UpdateNews {
+  updatePost: News;
 }
 
 export interface UpdateNewsVars {
   id: number;
-  input: Values;
+  input: InputNews;
 }
 
-export interface ICreateNews {
-  createPost: NewsResponse;
-}
-
-export interface IUpdateNews {
-  updatePost: INews;
-}
-
-export interface IDeleteNews {
+export interface DeleteNews {
   deletePost: boolean;
 }
 

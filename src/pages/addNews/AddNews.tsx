@@ -8,10 +8,7 @@ import { defaultInitialValues } from '../../components/organisms/newsForm/NewsFo
 
 const AddNews = () => {
   const navigate = useNavigate();
-
-  const [createNews, { loading }] = useCreateNews({
-    input: defaultInitialValues,
-  });
+  const [createNews, { loading }] = useCreateNews();
 
   const handleSubmit = (values: Values) => {
     const { id, ...restValues } = values;

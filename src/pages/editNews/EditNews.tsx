@@ -13,10 +13,12 @@ const EditNews: React.FC = () => {
   const [updateNews, { loading: isUpdating }] = useUpdateNews();
 
   const handleSubmit = (values: Values) => {
+    const { id, ...restValues } = values;
+
     updateNews({
       variables: {
         id: Number(values.id),
-        input: { title: values.title, body: values.body },
+        input: restValues,
       },
     }).then((updatedNews) => {
       navigate(Routes.ROOT);

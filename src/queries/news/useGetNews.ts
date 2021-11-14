@@ -1,9 +1,9 @@
 import { useQuery } from '@apollo/client';
 import { GET_ALL_NEWS } from './newsQueries';
-import { NewsFeedData } from './newsTypes';
+import { NewsData } from './newsTypes';
 
 const useGetNews = () => {
-  return useQuery<NewsFeedData>(GET_ALL_NEWS);
+  return useQuery<NewsData>(GET_ALL_NEWS);
 };
 
 export default useGetNews;
