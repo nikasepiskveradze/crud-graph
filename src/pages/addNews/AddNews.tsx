@@ -9,12 +9,14 @@ import { defaultInitialValues } from '../../components/organisms/newsForm/NewsFo
 const AddNews = () => {
   const navigate = useNavigate();
 
-  const [createNews, { loading, error, data }] = useCreateNews({
+  const [createNews, { loading }] = useCreateNews({
     input: defaultInitialValues,
   });
 
   const handleSubmit = (values: Values) => {
-    createNews({ variables: { input: values } }).then((news) => {
+    const { id, ...restValues } = values;
+
+    createNews({ variables: { input: restValues } }).then((news) => {
       navigate(Routes.ROOT);
     });
   };

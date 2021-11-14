@@ -31,3 +31,13 @@ export const CREATE_NEWS = gql`
     }
   }
 `;
+
+export const UPDATE_NEWS = gql`
+  mutation UpdateNews($id: ID!, $input: UpdatePostInput!) {
+    updatePost(id: $id, input: $input) {
+      id
+      title
+      body
+    }
+  }
+`;

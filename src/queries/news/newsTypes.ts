@@ -24,6 +24,19 @@ export interface NewsResponse extends INews {
   __typename: string;
 }
 
+export interface CreateNewsVars {
+  input: Values;
+}
+
+export interface UpdateNewsVars {
+  id: number;
+  input: Values;
+}
+
 export interface ICreateNews {
   createPost: NewsResponse;
+}
+
+export interface IUpdateNews {
+  updatePost: INews;
 }

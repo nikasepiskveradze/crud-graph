@@ -3,23 +3,35 @@ import NewsForm from '../../components/organisms/newsForm/NewsForm';
 import { Values } from '../../components/organisms/newsForm/INewsForm';
 import useGetSingleNews from '../../queries/news/useGetSingleNews';
 import { defaultInitialValues } from '../../components/organisms/newsForm/NewsFormValues';
+import useUpdateNews from '../../queries/news/useUpdateNews';
+import { useNavigate } from 'react-router-dom';
+import Routes from '../../constants/routes';
 
 const EditNews: React.FC = () => {
-  const { loading, error, data } = useGetSingleNews();
-  const news = data?.post;
+  const navigate = useNavigate();
+  const { loading, data } = useGetSingleNews();
+  const [updateNews, { loading: isUpdating }] = useUpdateNews();
+
+  const handleSubmit = (values: Values) => {
+    updateNews({
+      variables: {
+        id: Number(values.id),
+        input: { title: values.title, body: values.body },
+      },
+    }).then((updatedNews) => {
+      navigate(Routes.ROOT);
+    });
+  };
 
   if (loading) return <div>Loading...</div>;
 
-  const handleSubmit = (values: Values) => {
-    // Update logic goes here
-  };
-
   return (
     <NewsForm
-      initialValues={{ ...defaultInitialValues, ...news }}
+      initialValues={{ ...defaultInitialValues, ...data?.post }}
       onSubmit={handleSubmit}
       title="Update News"
       clickTitle="Update"
+      status={{ loading: isUpdating }}
     />
   );
 };
