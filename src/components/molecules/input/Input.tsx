@@ -1,16 +1,27 @@
-import React, { ChangeEvent } from 'react';
-import { TextField } from '@mui/material';
-import { BaseTextFieldProps } from '@mui/material/TextField/TextField';
+import React from 'react';
+import { BaseTextFieldProps, TextField } from '@mui/material';
+import { useFormikContext } from 'formik';
 
 interface IInput extends BaseTextFieldProps {
+  id: string;
+  name: string;
   label: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<IInput> = (props) => {
-  const { id, label, ...rest } = props;
+const Input = (props: IInput) => {
+  const { id, label, name, ...rest } = props;
+  const { values, errors, touched, handleChange } = useFormikContext<any>();
 
-  return <TextField id={id} label={label} {...rest} />;
+  return (
+    <TextField
+      id={id}
+      label={label}
+      value={values[name]}
+      onChange={handleChange}
+      error={Boolean(errors.title) && Boolean(touched.title)}
+      {...rest}
+    />
+  );
 };
 
 export default Input;
